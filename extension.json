@@ -1,0 +1,38 @@
+{
+    "name": "SCShell",
+    "version": "0.0.0",
+    "command_name": "scshell",
+    "extension_author": "c2biz",
+    "original_author": "Mr-Un1k0d3r",
+    "repo_url": "https://github.com/sliverarmory/SCShell",
+    "help": "Fileless lateral movement",
+    "depends_on": "coff-loader",
+    "entrypoint": "go",
+    "files": [
+        {
+            "os": "windows",
+            "arch": "amd64",
+            "path": "scshellbofx64.o"
+        }
+    ],
+    "arguments": [
+        {
+            "name": "targetHost",
+            "desc": "Target Host Address",
+            "type": "string",
+            "optional": true
+        },
+        {
+            "name": "serviceName",
+            "desc": "Target Service Name",
+            "type": "string",
+            "optional": true
+        },
+        {
+            "name": "payload",
+            "desc": "Command to execute",
+            "type": "string",
+            "optional": true
+        }
+    ]
+}
