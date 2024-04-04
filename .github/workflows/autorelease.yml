@@ -47,8 +47,7 @@ jobs:
       # Powershell is utter fucking trash.
       run: |
         $Version = git.exe describe --tags --abbrev=0
-        $Version = "`"$Version`""
-        Get-Content -Path extension.json | .\jq.exe ".version |= `"$Version`"" > ./artifacts/extension.json
+        Get-Content -Path alias.json | .\jq.exe --arg ver "$Version" '.version |= $ver' > ./artifacts/extension.json
         cd artifacts
         tar.exe -czvf ..\scshell.tar.gz .
 
