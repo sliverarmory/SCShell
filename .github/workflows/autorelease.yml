@@ -21,7 +21,7 @@ jobs:
       uses: egor-tensin/setup-mingw@v2.2.0
       with:
         platform: x64
-        version: 12.2.0 
+        version: 12.2.0 # https://github.com/egor-tensin/setup-mingw/issues/17
   
     - name: Check out code
       uses: actions/checkout@v2
@@ -47,7 +47,7 @@ jobs:
       # Powershell is utter fucking trash.
       run: |
         $Version = git.exe describe --tags --abbrev=0
-        Get-Content -Path alias.json | .\jq.exe --arg ver "$Version" '.version |= $ver' > ./artifacts/extension.json
+        Get-Content -Path extension.json | .\jq.exe --arg ver "$Version" '.version |= $ver' > ./artifacts/extension.json
         cd artifacts
         tar.exe -czvf ..\scshell.tar.gz .
 
