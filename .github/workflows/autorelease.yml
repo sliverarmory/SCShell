@@ -8,7 +8,7 @@ on:
 jobs:
 
   linux-windows-build:
-    name: CSharp Build
+    name: mingw32-gcc Build
     if: startsWith( github.ref, 'refs/tags/v')
     runs-on: windows-2019
     timeout-minutes: 45
@@ -18,9 +18,10 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1
       
     - name: Set up MinGW
-      uses: egor-tensin/setup-mingw@v2
+      uses: egor-tensin/setup-mingw@v2.2.0
       with:
         platform: x64
+        version: 12.2.0 
   
     - name: Check out code
       uses: actions/checkout@v2
@@ -34,7 +35,7 @@ jobs:
         Invoke-WebRequest -Uri https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe -OutFile jq.exe
         Invoke-WebRequest -Uri https://github.com/moloch--/minisign/releases/download/v0.2.1/minisign.exe -OutFile minisign.exe
 
-    - name: MSBuild
+    - name: Compile
       run: |
         mkdir artifacts
         cd .\CS-BOF\
