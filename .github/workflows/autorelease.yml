@@ -39,7 +39,7 @@ jobs:
         mkdir artifacts
         cd .\CS-BOF\
         rm *.o
-        x86_64-w64-mingw32-gcc.exe -c .\scshellbof.c -o ..\artifacts\scshellbofx64.o
+        x86_64-w64-mingw32-gcc.exe -c .\scshellbof.c -o ..\artifacts\scshellbofx64.o -Os
         cd ..
 
     - name: Build Package
